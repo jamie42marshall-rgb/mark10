@@ -11,7 +11,6 @@ RUN comfy node install --exit-on-fail comfyui_diffusionmodel_fp8_converter@1.0.0
 
 # Force cache bust for curl installation
 ARG CACHEBUST=1
-
 # Install curl for  downloads
 RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
 
