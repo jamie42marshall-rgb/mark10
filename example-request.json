@@ -1,0 +1,338 @@
+{
+  "input": {
+    "workflow": {
+      "298": {
+        "inputs": {
+          "samples": [
+            "829",
+            0
+          ],
+          "vae": [
+            "917",
+            2
+          ]
+        },
+        "class_type": "VAEDecode",
+        "_meta": {
+          "title": "VAEDecode"
+        }
+      },
+      "701": {
+        "inputs": {
+          "value": 1,
+          "model": [
+            "917",
+            0
+          ]
+        },
+        "class_type": "ModelSamplingAuraFlow",
+        "_meta": {
+          "title": "Flow Shift"
+        }
+      },
+      "737": {
+        "inputs": {
+          "width": 1024,
+          "height": 1024,
+          "batch_size": 1
+        },
+        "class_type": "EmptySD3LatentImage",
+        "_meta": {
+          "title": "EmptySD3LatentImage"
+        }
+      },
+      "740": {
+        "inputs": {
+          "filename_prefix": "final",
+          "images": [
+            "820",
+            0
+          ]
+        },
+        "class_type": "SaveImage",
+        "_meta": {
+          "title": "SaveImage"
+        }
+      },
+      "741": {
+        "inputs": {
+          "value": 1,
+          "clip": [
+            "917",
+            1
+          ]
+        },
+        "class_type": "T5TokenizerOptions",
+        "_meta": {
+          "title": "T5TokenizerOptions"
+        }
+      },
+      "748": {
+        "inputs": {
+          "text": [
+            "876",
+            0
+          ],
+          "clip": [
+            "741",
+            0
+          ]
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+          "title": "CLIP Text Encode (Positive Prompt)"
+        }
+      },
+      "749": {
+        "inputs": {
+          "text": "Bright skin. The lighting is even. The lighting is harsh. The image is bright. the people are overlit.  The skintones are white.  The white ballance is wrong and everything is yellow. There's a watermark and a signature. Fake Tits.  Breast implants. The image is bright.  Wierd anatomy.  Airbrushed skin.  the skin is smooth and has no wrinkles or pores.",
+          "clip": [
+            "741",
+            0
+          ]
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+          "title": "CLIP Text Encode (Negative Prompt)"
+        }
+      },
+      "819": {
+        "inputs": {
+          "model_name": "4xNomosWebPhoto_RealPLKSR.safetensors"
+        },
+        "class_type": "UpscaleModelLoader",
+        "_meta": {
+          "title": "UpscaleModelLoader"
+        }
+      },
+      "820": {
+        "inputs": {
+          "value": 2,
+          "image": [
+            "866",
+            0
+          ],
+          "model": [
+            "919",
+            0
+          ],
+          "positive": [
+            "748",
+            0
+          ],
+          "negative": [
+            "749",
+            0
+          ],
+          "vae": [
+            "917",
+            2
+          ],
+          "upscale_model": [
+            "819",
+            0
+          ]
+        },
+        "class_type": "UltimateSDUpscale",
+        "_meta": {
+          "title": "UltimateSDUpscale"
+        }
+      },
+      "828": {
+        "inputs": {
+          "value": 0.6,
+          "model": [
+            "919",
+            0
+          ],
+          "positive": [
+            "748",
+            0
+          ],
+          "negative": [
+            "749",
+            0
+          ],
+          "latent_image": [
+            "737",
+            0
+          ]
+        },
+        "class_type": "ClownsharKSampler_Beta",
+        "_meta": {
+          "title": "ClownsharKSampler_Beta"
+        }
+      },
+      "829": {
+        "inputs": {
+          "value": 0.5,
+          "latent_image": [
+            "848",
+            0
+          ]
+        },
+        "class_type": "ClownsharkChainsampler_Beta",
+        "_meta": {
+          "title": "ClownsharkChainsampler_Beta"
+        }
+      },
+      "848": {
+        "inputs": {
+          "value": 0.53,
+          "latent_image": [
+            "828",
+            0
+          ]
+        },
+        "class_type": "ClownsharkChainsampler_Beta",
+        "_meta": {
+          "title": "ClownsharkChainsampler_Beta"
+        }
+      },
+      "865": {
+        "inputs": {
+          "filename": "sam_vit_b_01ec64.pth"
+        },
+        "class_type": "SAMLoader",
+        "_meta": {
+          "title": "SAMLoader"
+        }
+      },
+      "866": {
+        "inputs": {
+          "value": 1024,
+          "image": [
+            "298",
+            0
+          ],
+          "model": [
+            "919",
+            0
+          ],
+          "clip": [
+            "741",
+            0
+          ],
+          "vae": [
+            "917",
+            2
+          ],
+          "positive": [
+            "748",
+            0
+          ],
+          "negative": [
+            "749",
+            0
+          ],
+          "bbox_detector": [
+            "867",
+            0
+          ],
+          "sam_model_opt": [
+            "865",
+            0
+          ]
+        },
+        "class_type": "FaceDetailer",
+        "_meta": {
+          "title": "FaceDetailer"
+        }
+      },
+      "867": {
+        "inputs": {
+          "filename": "bbox/face_yolov8m.pt"
+        },
+        "class_type": "UltralyticsDetectorProvider",
+        "_meta": {
+          "title": "UltralyticsDetectorProvider"
+        }
+      },
+      "868": {
+        "inputs": {
+          "images": [
+            "866",
+            1
+          ]
+        },
+        "class_type": "PreviewImage",
+        "_meta": {
+          "title": "Cropped (refined)"
+        }
+      },
+      "869": {
+        "inputs": {
+          "images": [
+            "871",
+            0
+          ]
+        },
+        "class_type": "PreviewImage",
+        "_meta": {
+          "title": "Mask"
+        }
+      },
+      "870": {
+        "inputs": {
+          "images": [
+            "866",
+            2
+          ]
+        },
+        "class_type": "PreviewImage",
+        "_meta": {
+          "title": "Cropped (enhanced alpha)"
+        }
+      },
+      "871": {
+        "inputs": {
+          "mask": [
+            "866",
+            3
+          ]
+        },
+        "class_type": "MaskToImage",
+        "_meta": {
+          "title": "MaskToImage"
+        }
+      },
+      "876": {
+        "inputs": {
+          "text": "append"
+        },
+        "class_type": "StringFunction|pysssss",
+        "_meta": {
+          "title": "assemble main prompt"
+        }
+      },
+      "887": {
+        "inputs": {},
+        "class_type": "f27e34f0-eba8-473d-8c39-1ded8a713b4f",
+        "_meta": {
+          "title": "f27e34f0-eba8-473d-8c39-1ded8a713b4f"
+        }
+      },
+      "917": {
+        "inputs": {
+          "ckpt_name": "mark10_00001_.safetensors"
+        },
+        "class_type": "CheckpointLoaderSimple",
+        "_meta": {
+          "title": "CheckpointLoaderSimple"
+        }
+      },
+      "919": {
+        "inputs": {
+          "model": [
+            "701",
+            0
+          ]
+        },
+        "class_type": "ModelFP8ConverterNode",
+        "_meta": {
+          "title": "ModelFP8ConverterNode"
+        }
+      }
+    }
+  }
+}
