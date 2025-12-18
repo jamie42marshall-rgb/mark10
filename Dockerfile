@@ -9,6 +9,16 @@ RUN comfy node install --exit-on-fail comfyui-impact-subpack@1.3.5
 RUN comfy node install --exit-on-fail comfyui-custom-scripts@1.2.5
 RUN comfy node install --exit-on-fail comfyui_diffusionmodel_fp8_converter@1.0.0
 
+
+
+# Force cache bust for curl installation
+ARG CACHEBUST=1
+
+# Install curl for  downloads
+RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
+
+
+
 # download models into comfyui
 # Download your private Vision model from Hugging Face
 RUN curl -L -H "Authorization: Bearer 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" \
