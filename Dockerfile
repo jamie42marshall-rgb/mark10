@@ -21,9 +21,9 @@ RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
 
 # download models into comfyui
 # Download your private Vision model from Hugging Face
-RUN curl -L -H "Authorization: Bearer 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" \
+RUN curl -L \
     "https://huggingface.co/DocApoc/Vision_mark10/resolve/main/mark10_00001_.safetensors" \
-    -o /comfyui/models/checkpoints/mark10_00001_.safetensorsRUN comfy model download --url https://dl.fbaipublicfiles.com/segment_anything/sam_vit_b_01ec64.pth --relative-path models/sams --filename sam_vit_b_01ec64.pth
+    -o /comfyui/models/checkpoints/mark10_00001_.safetensors
 RUN comfy model download --url https://huggingface.co/Bingsu/adetailer/resolve/main/face_yolov8m.pt --relative-path models/ultralytics/bbox --filename face_yolov8m.pt
 RUN comfy model download --url https://github.com/Phhofm/models/releases/download/4xNomosWebPhoto_RealPLKSR/4xNomosWebPhoto_RealPLKSR.safetensors --relative-path models/upscale_models --filename 4xNomosWebPhoto_RealPLKSR.safetensors
 
