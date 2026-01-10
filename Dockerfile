@@ -14,7 +14,7 @@ COPY models/uncannyPhotorealism_v13.safetensors /comfyui/models/diffusion_models
 COPY models/lenovo_chroma.safetensors /comfyui/models/loras/
 COPY models/high_cinematic_detail_s_m_1.0.safetensors /comfyui/models/loras/
 
-RUN comfy model download --url https://huggingface.co/silveroxides/flan-t5-xxl-encoder-only/blob/main/flan-t5-xxl-fp16.safetensors --relative-path models/clip --filename flan-t5-xxl-fp16.safetensors
+RUN comfy model download --url https://huggingface.co/silveroxides/flan-t5-xxl-encoder-only/resolve/main/flan-t5-xxl-fp16.safetensors --relative-path models/clip --filename flan-t5-xxl-fp16.safetensors
 RUN comfy model download --url https://huggingface.co/Bingsu/adetailer/resolve/main/face_yolov8m.pt --relative-path models/ultralytics/bbox --filename face_yolov8m.pt
 RUN comfy model download --url https://github.com/Phhofm/models/releases/download/4xNomosWebPhoto_RealPLKSR/4xNomosWebPhoto_RealPLKSR.safetensors --relative-path models/upscale_models --filename 4xNomosWebPhoto_RealPLKSR.safetensors
 RUN comfy model download --url https://dl.fbaipublicfiles.com/segment_anything/sam_vit_b_01ec64.pth --relative-path models/sams --filename sam_vit_b_01ec64.pth
